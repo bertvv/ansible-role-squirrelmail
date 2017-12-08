@@ -1,13 +1,16 @@
----
 galaxy_info:
   author: Bert Van Vreckem
-  description: PURPOSE
+  description: Ansible role to install squirrelmail on a linux system.
   license: BSD
-  min_ansible_version: 2.0
+  min_ansible_version: 2.1
   platforms:
     - name: EL
       versions:
         - 7
+    - name: Fedora
+      versions:
+        - 26
   galaxy_tags:
-    - system
-dependencies: []
+    - squirrelmail
+dependencies:
+  - bertvv.httpd

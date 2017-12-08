@@ -1,9 +1,8 @@
-# roles/squirrelmail/vars/RedHat.yml
-#
-# Distribution-specific variables for RHEL, CentOS, ...
 ---
+# vars file for bertvv.squirrelmail
 
-squirrelmail_packages:
+squirremail_repository:
+  - epel-release
+
+squirremail_packages:
   - squirrelmail
-
-squirrelmail_service: squirrelmaild

@@ -1,5 +1,5 @@
-# roles/squirrelmail/tasks/main.yml
 ---
+# tasks file for bertvv.squirrelmail
 
 - include_vars: "{{ item }}"
   with_first_found:
@@ -7,16 +7,22 @@
     - "{{ ansible_os_family }}.yml"
   tags: squirrelmail
 
+- name: Install package repository
+  package:
+    name: "{{ squirremail_repository }}"
+    state: installed
+  tags: squirrelmail
+
 - name: Install packages
   package:
     name: "{{ item }}"
     state: installed
-  with_items: "{{ squirrelmail_packages }}"
-  tags: squirrelmail
+  with_items: "{{ squirremail_packages }}"
+  tags: squirrelmail  
 
-- name: Ensure service is started
-  service:
-    name: "{{ squirrelmail_service }}"
-    state: started
-    enabled: true
+- name: Install Squirrelmail configuration
+  template:
+    src: squirrelmail.conf.j2
+    dest: /usr/share/squirrelmail/config/config.php
+  notify: restart httpd
   tags: squirrelmail
