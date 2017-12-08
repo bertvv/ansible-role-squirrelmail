@@ -1,0 +1,9 @@
+# roles/squirrelmail/vars/RedHat.yml
+#
+# Distribution-specific variables for RHEL, CentOS, ...
+---
+
+squirrelmail_packages:
+  - squirrelmail
+
+squirrelmail_service: squirrelmaild

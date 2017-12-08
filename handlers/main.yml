@@ -1,0 +1,7 @@
+# roles/squirrelmail/handlers/main.yml
+---
+
+- name: restart squirrelmail
+  service:
+    name: "{{ squirrelmail_service }}"
+    state: restarted

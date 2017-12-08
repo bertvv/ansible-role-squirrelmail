@@ -1,0 +1,22 @@
+# roles/squirrelmail/tasks/main.yml
+---
+
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+  tags: squirrelmail
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ squirrelmail_packages }}"
+  tags: squirrelmail
+
+- name: Ensure service is started
+  service:
+    name: "{{ squirrelmail_service }}"
+    state: started
+    enabled: true
+  tags: squirrelmail
