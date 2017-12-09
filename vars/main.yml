@@ -1,6 +1,0 @@
----
-# vars file for bertvv.squirrelmail
-squirrelmail_domain: localhost
-imapServerAddress: localhost
-smtpServerAddress: localhost
-default_language: en_US
