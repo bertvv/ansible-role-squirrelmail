@@ -11,13 +11,44 @@ No specific requirements
 ## Role Variables
 
 
-| Variable   | Default | Comments (type)  |
-| :---       | :---    | :---             |
-| `role_var` | -       | (scalar) PURPOSE |
+| Variable        | Default | Comments (type)  |
+| :---            | :---    | :---             |
+| `role_var`      | -       | (scalar) PURPOSE |
+| domain          |localhost|How the email domain will be named|
+|imapServerAddress|localhost|Server that provides IMAP services for Squirrelmail|
+|smtpServerAddress|localhost|Server that provides SMTP services for Squirrelmail|
+|default_language |en_US    |Language that will be used by Squirrelmail|
+
 
 ## Dependencies
 
-No dependencies.
+- ![bertvv.mailserver](https://github.com/bertvv/ansible-role-mailserver)
+
+- Ansible role ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base) can be used to open the necessary firewall ports and to create users for the mailserver.
+
+- Ports to open:
+
+```
+  rhbase_firewall_allow_services:
+    - pop3s
+    - imaps
+  rhbase_firewall_allow_ports:
+    - 587/tcp
+    - 465/tcp
+    - 110/tcp
+    - 143/tcp
+```
+
+- Users can be created using the following syntax.
+This creates users that can login in to the mailserver but not into the linux machine.
+
+```
+  rhbase_users:
+    - name: johndoe
+      password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdT [...]'
+      shell: /sbin/nologin
+```
+
 
 ## Example Playbook
 
@@ -43,4 +74,6 @@ Pull requests are also very welcome. The best way to submit a PR is by first cre
 ## Contributors
 
 - [Bert Van Vreckem](https://github.com/bertvv/) (maintainer)
-
+- [Robin Roelandt](https://github.com/RobinRoelandt)
+- [Florian Van Steen](https://github.com/florianvansteen)
+- [Jolan van Impe](https://github.com/jolanvanimpe)
