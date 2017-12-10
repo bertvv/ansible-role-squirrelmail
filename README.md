@@ -2,7 +2,7 @@
 
 An Ansible role for PURPOSE. Specifically, the responsibilities of this role are to:
 
--
+- Provide an easy to use webplatform for email services provided by Dovecot and Postfix.
 
 ## Requirements
 
