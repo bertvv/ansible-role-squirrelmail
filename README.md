@@ -1,8 +1,9 @@
 # Ansible role `squirrelmail`
 
-An Ansible role for PURPOSE. Specifically, the responsibilities of this role are to:
+An Ansible role which provides webaccess for email servers. Specifically, the responsibilities of this role are to:
 
-- Provide an easy to use webplatform for email services provided by Dovecot and Postfix.
+Provide an easy to use webplatform for email services provided by an email server. These servcies can be used by clients on the network.
+
 
 ## Requirements
 
@@ -14,29 +15,29 @@ No specific requirements
 | Variable        | Default | Comments (type)  |
 | :---            | :---    | :---             |
 | `role_var`      | -       | (scalar) PURPOSE |
-| domain          |localhost|How the email domain will be named|
+|domain           |localhost|How the email domain will be named|
 |imapServerAddress|localhost|Server that provides IMAP services for Squirrelmail|
 |smtpServerAddress|localhost|Server that provides SMTP services for Squirrelmail|
 |default_language |en_US    |Language that will be used by Squirrelmail|
+|Squirrelmail_serverType|dovecot|Service used for IMAP services|
+|httpd_documentroot|/var/www|Adjusts the main folder for PHP|
 
 
 ## Dependencies
 
-- ![bertvv.mailserver](https://github.com/bertvv/ansible-role-mailserver)
+- ![bertvv.httpd](https://github.com/bertvv/ansible-role-httpd) provides PHP support for Squirrelmail.
 
-- Ansible role ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base) can be used to open the necessary firewall ports and to create users for the mailserver.
+- ![bertvv.mailserver](https://github.com/bertvv/ansible-role-mailserver) provides dovecot and postfix services required for Squirrelmail to work if Dovecot and Postfix are used. It is possible to use this role with antoher IMAP provider, which include: bincimap, courier, cyrus, dovecot, exchange, hmailserver, macosx, mercury32, uw, gmail, other. These services must be defined in the YML file the way they are written here.
 
-- Ports to open:
+- ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base) can be used to open the necessary firewall ports and to create users for the mailserver.
+
+Ports required to be opened:
 
 ```
   rhbase_firewall_allow_services:
     - pop3s
     - imaps
-  rhbase_firewall_allow_ports:
-    - 587/tcp
-    - 465/tcp
-    - 110/tcp
-    - 143/tcp
+    - httpd
 ```
 
 - Users can be created using the following syntax.
@@ -50,6 +51,7 @@ This creates users that can login in to the mailserver but not into the linux ma
 ```
 
 
+When the installation is completed, the homepage of squirrelmail can be seen on your hostmachine by following the link ```IP adress of your local machine/squirrelmail```
 ## Example Playbook
 
 See the test playbooks in either the [Vagrant](https://github.com/bertvv/ansible-role-squirrelmail/blob/vagrant-tests/test.yml) or [Docker](https://github.com/bertvv/ansible-role-squirrelmail/blob/docker-tests/test.yml) test environment. See the section Testing for details.
