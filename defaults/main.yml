@@ -1,7 +1,12 @@
 ---
 # defaults file for bertvv.squirrelmail
 
-domain: localhost
-imapServerAddress: localhost
-smtpServerAddress: localhost
-default_language: en_US
+Squirrelmail_OrganizationName: SquirrelMail
+Squirrelmail_signOutPage: /webmail
+Squirrelmail_domain: localhost
+Squirrelmail_sendmail: false
+Squirrelmail_imapServerAddress: localhost
+Squirrelmail_smtpServerAddress: localhost
+Squirrelmail_serverType: dovecot
+Squirrelmail_defaultLanguage: en_US
+

@@ -26,3 +26,11 @@
     dest: /usr/share/squirrelmail/config/config.php
   notify: restart httpd
   tags: squirrelmail
+
+- name: Create symlink to squirrelmail
+  file: 
+    src: /usr/share/squirrelmail 
+    dest: /var/www/squirrelmail 
+    state: link 
+    force: yes
+  notify: restart httpd
