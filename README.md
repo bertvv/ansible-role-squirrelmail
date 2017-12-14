@@ -19,7 +19,7 @@ Ports required to be opened on the firewall (if you decide to use ![bertvv.rhbas
     - httpd
 ```
 
-- Users can be created using the following syntax (if you decide to use ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base)).
+Users can be created using the following syntax (if you decide to use ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base)).
 The shell parameter creates users that can login on the squirrelmail webinterface but not into the linux machine.
 
 ```
