@@ -1,26 +1,48 @@
 # Ansible role `squirrelmail`
 
-An Ansible role which provides webaccess for email servers. Specifically, the responsibilities of this role are to:
+An Ansible role which sets up squirrelmail on servers that run RedHat. Specifically, the responsibilities of this role are to:
 
-Provide an easy to use webplatform for email services provided by an email server. These servcies can be used by clients on the network.
+- Install necessary packages
+- Manage configuration
+- Manage SELinux, when it is enabled
 
+When the installation is completed, the homepage of squirrelmail can be seen on your hostmachine by following the link ```IP adress of your local machine/squirrelmail```
 
 ## Requirements
 
-No specific requirements
+Ports required to be opened on the firewall (if you decide to use ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base)):
+
+```
+  rhbase_firewall_allow_services:
+    - pop3s
+    - imaps
+    - httpd
+```
+
+- Users can be created using the following syntax (if you decide to use ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base)).
+The shell parameter creates users that can login on the squirrelmail webinterface but not into the linux machine.
+
+```
+  rhbase_users:
+    - name: johndoe
+      password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdT [...]'
+      shell: /sbin/nologin
+```
+
 
 ## Role Variables
 
 
 | Variable        | Default | Comments (type)  |
 | :---            | :---    | :---             |
-| `role_var`      | -       | (scalar) PURPOSE |
-|domain           |localhost|How the email domain will be named|
-|imapServerAddress|localhost|Server that provides IMAP services for Squirrelmail|
-|smtpServerAddress|localhost|Server that provides SMTP services for Squirrelmail|
-|default_language |en_US    |Language that will be used by Squirrelmail|
+|Squirrelmail_OrganizationName|SquirrelMail|The name of the organitation|
+|Squirrelmail_signOutPage|/webmail|The page you will be redirected to when you sign out|
+|Squirrelmail_domain|localhost|How the email domain will be named|
+|Squirrelmail_sendmail|false|If set to true POP will be prefered over SMTP|
+|Squirrelmail_imapServerAddress|localhost|Server that provides IMAP services for Squirrelmail|
+|Squirrelmail_smtpServerAddress|localhost|Server that provides SMTP services for Squirrelmail|
 |Squirrelmail_serverType|dovecot|Service used for IMAP services|
-|httpd_documentroot|/var/www|Adjusts the main folder for PHP|
+|Squirrelmail_defaultLanguage|en_US|Language that will be used by Squirrelmail|
 
 
 ## Dependencies
@@ -31,27 +53,7 @@ No specific requirements
 
 - ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base) can be used to open the necessary firewall ports and to create users for the mailserver.
 
-Ports required to be opened:
 
-```
-  rhbase_firewall_allow_services:
-    - pop3s
-    - imaps
-    - httpd
-```
-
-- Users can be created using the following syntax.
-This creates users that can login in to the mailserver but not into the linux machine.
-
-```
-  rhbase_users:
-    - name: johndoe
-      password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdT [...]'
-      shell: /sbin/nologin
-```
-
-
-When the installation is completed, the homepage of squirrelmail can be seen on your hostmachine by following the link ```IP adress of your local machine/squirrelmail```
 ## Example Playbook
 
 See the test playbooks in either the [Vagrant](https://github.com/bertvv/ansible-role-squirrelmail/blob/vagrant-tests/test.yml) or [Docker](https://github.com/bertvv/ansible-role-squirrelmail/blob/docker-tests/test.yml) test environment. See the section Testing for details.
