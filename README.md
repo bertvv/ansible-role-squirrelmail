@@ -47,11 +47,11 @@ The shell parameter creates users that can login on the squirrelmail webinterfac
 
 ## Dependencies
 
-- ![bertvv.httpd](https://github.com/bertvv/ansible-role-httpd) provides PHP support for Squirrelmail.
+- [bertvv.httpd](https://github.com/bertvv/ansible-role-httpd) provides PHP support for Squirrelmail.
 
-- ![bertvv.mailserver](https://github.com/bertvv/ansible-role-mailserver) provides dovecot and postfix services required for Squirrelmail to work if Dovecot and Postfix are used. It is possible to use this role with antoher IMAP provider, which include: bincimap, courier, cyrus, dovecot, exchange, hmailserver, macosx, mercury32, uw, gmail, other. These services must be defined in the YML file the way they are written here.
+- [bertvv.mailserver](https://github.com/bertvv/ansible-role-mailserver) provides dovecot and postfix services required for Squirrelmail to work if Dovecot and Postfix are used. It is possible to use this role with antoher IMAP provider, which include: bincimap, courier, cyrus, dovecot, exchange, hmailserver, macosx, mercury32, uw, gmail, other. These services must be defined in the YML file the way they are written here.
 
-- ![bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base) can be used to open the necessary firewall ports and to create users for the mailserver.
+- [bertvv.rhbase](https://github.com/bertvv/ansible-role-rh-base) can be used to open the necessary firewall ports and to create users for the mailserver.
 
 
 ## Example Playbook
