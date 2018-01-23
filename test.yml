@@ -1,5 +1,40 @@
 ---
 - hosts: all
   become: true
+  vars:
+    rhbase_firewall_allow_services:
+      - imap
+      - imaps
+      - pop3
+      - pop3s
+      - http
+      - https
+      - smtp
+      - smtps
+      - smtp-submission
+
+    httpd_scripting: 'php'
+
+    rhbase_users:
+      - name: jan
+      password: '$6$9BUCNs4hpU86lhB5$DzCc9fWmTrAfGJ5yWCpe5ZeUQk9c/kzh6DZ3HJQDtv2OjOFJTjnwz7nwe/iEd0j5vo05csc7t3INYf7rBqUZy0'
+      shell: /sbin/nologin
+
+      - name: sam
+      password: '$6$BVdU.mRWqhZzfPQx$7ESB7dLFqB3KvRaJ9Qj/5r3AFccaJ08S4KOIr.PwessZCRldN.TVbyWbN6XTn6r2Fj6aZa5IUQRxV1/uzVOt/.'
+      shell: /sbin/nologin
+
+    postfix_myhostname: mail.example.com
+
+    postfix_mydomain: example.com
+
+    Squirrelmail_domain: example.com
+    Squirrelmail_imapServerAddress: mail.example.com
+    Squirrelmail_smtpServerAddress: mail.example.com
+    httpd_DocumentRoot: /var/www/
+
   roles:
     - squirrelmail
+    - rh-base
+    - httpd
+    - mailserver
