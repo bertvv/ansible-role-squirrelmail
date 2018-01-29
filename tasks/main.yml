@@ -9,7 +9,7 @@
 
 - name: Install package repository
   package:
-    name: "{{ squirremail_repository }}"
+    name: "{{ squirrelmail_repository }}"
     state: installed
   tags: squirrelmail
 
@@ -17,8 +17,8 @@
   package:
     name: "{{ item }}"
     state: installed
-  with_items: "{{ squirremail_packages }}"
-  tags: squirrelmail  
+  with_items: "{{ squirrelmail_packages }}"
+  tags: squirrelmail
 
 - name: Install Squirrelmail configuration
   template:
@@ -28,9 +28,9 @@
   tags: squirrelmail
 
 - name: Create symlink to squirrelmail
-  file: 
-    src: /usr/share/squirrelmail 
-    dest: /var/www/squirrelmail 
-    state: link 
+  file:
+    src: /usr/share/squirrelmail
+    dest: /var/www/squirrelmail
+    state: link
     force: yes
   notify: restart httpd

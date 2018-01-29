@@ -1,8 +1,8 @@
 ---
 # vars file for bertvv.squirrelmail
 
-squirremail_repository:
+squirrelmail_repository:
   - epel-release
 
-squirremail_packages:
+squirrelmail_packages:
   - squirrelmail
