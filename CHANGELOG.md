@@ -8,4 +8,12 @@ First release!
 
 ### Added
 
-- FEATURE
+- First force_username_lowercase
+
+
+## 1.0.1 - 2018-01-29
+
+### Fixed
+
+- Fixed several typos
+- Updated documentation
