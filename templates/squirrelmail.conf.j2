@@ -29,10 +29,10 @@ $lossy_encoding        = false;
 
 $domain                 = '{{ Squirrelmail_domain }}';
 $imapServerAddress      = '{{ Squirrelmail_imapServerAddress }}';
-$imapPort               = 143;
+$imapPort               = {{ Squirrelmail_imap_port }};;
 $useSendmail            = {{ Squirrelmail_sendmail }};
 $smtpServerAddress      = '{{ Squirrelmail_smtpServerAddress }}';
-$smtpPort               = 25;
+$smtpPort               = {{ Squirrelmail_smtp_port }};
 $sendmail_path          = '/usr/sbin/sendmail';
 $sendmail_args          = '-i -t';
 $pop_before_smtp        = false;
