@@ -30,7 +30,7 @@
 - name: Create symlink to squirrelmail
   file:
     src: /usr/share/squirrelmail
-    dest: /var/www/squirrelmail
+    dest: "{{ Squirrelmail_webpage_directory }}"
     state: link
     force: yes
   notify: restart httpd

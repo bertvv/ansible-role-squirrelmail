@@ -78,16 +78,17 @@ post_tasks:
 ## Role Variables
 
 
-| Variable        | Default | Comments (type)  |
-| :---            | :---    | :---             |
-|Squirrelmail_OrganizationName|SquirrelMail|The name of the organization|
-|Squirrelmail_signOutPage|/webmail|The page you will be redirected to when you sign out|
-|Squirrelmail_domain|localhost|How the email domain will be named|
-|Squirrelmail_sendmail|false|If set to true POP will be preferred over SMTP|
-|Squirrelmail_imapServerAddress|localhost|Server that provides IMAP services for Squirrelmail|
-|Squirrelmail_smtpServerAddress|localhost|Server that provides SMTP services for Squirrelmail|
-|Squirrelmail_serverType|dovecot|Service used for IMAP services|
-|Squirrelmail_defaultLanguage|en_US|Language that will be used by Squirrelmail|
+| Variable                       | Default               | Comments (type)                                                       |
+| :----------------------------- | :-------------------- | :-------------------------------------------------------------------- |
+| Squirrelmail_OrganizationName  | SquirrelMail          | The name of the organization                                          |
+| Squirrelmail_signOutPage       | /webmail              | The page you will be redirected to when you sign out                  |
+| Squirrelmail_webpage_directory | /var/www/squirrelmail | The directory where the squirrelmail webpage will create a symlink to |
+| Squirrelmail_domain            | localhost             | How the email domain will be named                                    |
+| Squirrelmail_sendmail          | false                 | If set to true POP will be preferred over SMTP                        |
+| Squirrelmail_imapServerAddress | localhost             | Server that provides IMAP services for Squirrelmail                   |
+| Squirrelmail_smtpServerAddress | localhost             | Server that provides SMTP services for Squirrelmail                   |
+| Squirrelmail_serverType        | dovecot               | Service used for IMAP services                                        |
+| Squirrelmail_defaultLanguage   | en_US                 | Language that will be used by Squirrelmail                            |
 
 
 ## Dependencies

@@ -11,3 +11,4 @@ Squirrelmail_serverType: dovecot
 Squirrelmail_defaultLanguage: en_US
 Squirrelmail_imap_port: 143
 Squirrelmail_smtp_port: 25
+Squirrelmail_webpage_directory: /var/www/squirrelmail
